@@ -1,469 +1,543 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Liberty Broker's - Consultoria Imobiliária Premium</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Liberty Broker's — Consultoria Imobiliária Premium</title>
 
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            line-height: 1.6;
-            color: #1a3a52;
-            background-color: #f5f5f0;
-        }
+<style>
+:root{
+  --gold:#C9A84C;
+  --gold-light:#E8C97A;
+  --gold-dim:#8B6E2E;
+  --navy:#0A1628;
+  --navy-mid:#122040;
+  --navy-card:#0f1e3a;
+  --cream:#F5F0E8;
+  --white:#FFFFFF;
+  --muted:rgba(245,240,232,0.6);
+}
 
-        /* Navigation */
-        nav {
-            background-color: #1a3a52;
-            padding: 1.5rem 2rem;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
 
-        nav .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+body{
+  font-family:Arial,sans-serif;
+  background:var(--navy);
+  color:var(--cream);
+}
 
-        nav .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: #d4af37;
-            text-decoration: none;
-        }
+/* NAV */
+nav{
+  position:fixed;
+  width:100%;
+  top:0;
+  left:0;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:20px 40px;
+  background:rgba(10,22,40,0.95);
+  z-index:999;
+}
 
-        nav .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
+.logo{
+  color:var(--gold);
+  font-size:24px;
+  text-decoration:none;
+  font-weight:bold;
+}
 
-        nav a {
-            color: #f5f5f0;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
+.nav-links{
+  display:flex;
+  gap:20px;
+}
 
-        nav a:hover {
-            color: #d4af37;
-        }
+.nav-links a{
+  color:var(--cream);
+  text-decoration:none;
+  font-size:14px;
+}
 
-        .cta-button {
-            background-color: #d4af37;
-            color: #1a3a52;
-            padding: 0.75rem 1.5rem;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
-        }
+/* HERO */
+.hero{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:120px 20px;
+  background:linear-gradient(180deg,var(--navy),var(--navy-mid));
+}
 
-        .cta-button:hover {
-            background-color: #e5c158;
-            transform: translateY(-2px);
-        }
+.hero-content{
+  max-width:800px;
+}
 
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, #1a3a52 0%, #2a5a7a 100%);
-            color: #f5f5f0;
-            padding: 6rem 2rem;
-            text-align: center;
-        }
+.hero h1{
+  font-size:60px;
+  margin-bottom:20px;
+}
 
-        .hero .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+.hero h1 em{
+  color:var(--gold);
+}
 
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
-        }
+.hero p{
+  line-height:1.8;
+  margin-bottom:40px;
+  color:var(--muted);
+}
 
-        .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            opacity: 0.95;
-        }
+.hero-btns{
+  display:flex;
+  gap:20px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
 
-        .hero .buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
+.btn-gold{
+  background:var(--gold);
+  color:var(--navy);
+  padding:15px 30px;
+  text-decoration:none;
+  font-weight:bold;
+}
 
-        .btn {
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 4px;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-decoration: none;
-            display: inline-block;
-        }
+.btn-outline{
+  border:1px solid var(--gold);
+  color:var(--gold);
+  padding:15px 30px;
+  text-decoration:none;
+}
 
-        .btn-primary {
-            background-color: #d4af37;
-            color: #1a3a52;
-            font-weight: 600;
-        }
+/* STATS */
+.stats-bar{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  border-top:1px solid rgba(201,168,76,0.1);
+  border-bottom:1px solid rgba(201,168,76,0.1);
+}
 
-        .btn-primary:hover {
-            background-color: #e5c158;
-            transform: translateY(-3px);
-        }
+.stat{
+  padding:30px;
+  text-align:center;
+  min-width:200px;
+}
 
-        .btn-secondary {
-            background-color: transparent;
-            color: #f5f5f0;
-            border: 2px solid #d4af37;
-            font-weight: 600;
-        }
+.stat-num{
+  font-size:40px;
+  color:var(--gold);
+}
 
-        .btn-secondary:hover {
-            background-color: #d4af37;
-            color: #1a3a52;
-        }
+.stat-label{
+  margin-top:10px;
+  font-size:14px;
+}
 
-        /* About Section */
-        .about {
-            padding: 4rem 2rem;
-            background-color: #fff;
-        }
+/* SECTION */
+.section{
+  padding:80px 20px;
+  max-width:1200px;
+  margin:auto;
+}
 
-        .about .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-        }
+.section h2{
+  font-size:42px;
+  margin-bottom:20px;
+}
 
-        .about h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-            color: #1a3a52;
-        }
+.section h2 em{
+  color:var(--gold);
+}
 
-        .about p {
-            font-size: 1.1rem;
-            margin-bottom: 1rem;
-            color: #555;
-            line-height: 1.8;
-        }
+.about-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:40px;
+}
 
-        /* Services Section */
-        .services {
-            padding: 4rem 2rem;
-            background-color: #f5f5f0;
-        }
+.about-text p{
+  margin-bottom:20px;
+  line-height:1.8;
+}
 
-        .services .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+.about-card{
+  background:var(--navy-card);
+  padding:40px;
+  border:1px solid rgba(201,168,76,0.2);
+}
 
-        .services h2 {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 3rem;
-            color: #1a3a52;
-        }
+.as-item{
+  margin-bottom:30px;
+}
 
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
+.as-num{
+  font-size:42px;
+  color:var(--gold);
+}
 
-        .service-card {
-            background: #fff;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-            transition: all 0.3s;
-        }
+/* SERVICES */
+.services{
+  background:var(--navy-mid);
+}
 
-        .service-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
-        }
+.services-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
 
-        .service-card h3 {
-            color: #d4af37;
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-        }
+.svc-card{
+  background:var(--navy-card);
+  padding:30px;
+  border:1px solid rgba(201,168,76,0.1);
+}
 
-        .service-card p {
-            color: #666;
-            line-height: 1.8;
-        }
+.svc-title{
+  font-size:24px;
+  margin:15px 0;
+}
 
-        /* Testimonials */
-        .testimonials {
-            padding: 4rem 2rem;
-            background-color: #fff;
-        }
+.svc-text{
+  line-height:1.8;
+  color:var(--muted);
+}
 
-        .testimonials .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+/* TESTIMONIALS */
+.testimonials-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
 
-        .testimonials h2 {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 3rem;
-            color: #1a3a52;
-        }
+.tcard{
+  background:var(--navy-card);
+  padding:30px;
+}
 
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
+.tcard-text{
+  line-height:1.8;
+  margin-bottom:20px;
+}
 
-        .testimonial-card {
-            background: #f5f5f0;
-            padding: 2rem;
-            border-radius: 8px;
-            border-left: 4px solid #d4af37;
-        }
+.tcard-name{
+  color:var(--gold);
+}
 
-        .testimonial-card p {
-            color: #666;
-            margin-bottom: 1rem;
-            font-style: italic;
-        }
+/* CONTACT */
+.contact-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:40px;
+}
 
-        .testimonial-card .author {
-            color: #1a3a52;
-            font-weight: 600;
-        }
+.contact-box{
+  background:var(--navy-card);
+  padding:30px;
+  margin-bottom:20px;
+}
 
-        /* Contact Section */
-        .contact {
-            padding: 4rem 2rem;
-            background: linear-gradient(135deg, #1a3a52 0%, #2a5a7a 100%);
-            color: #f5f5f0;
-            text-align: center;
-        }
+.contact-box h4{
+  margin-bottom:10px;
+  color:var(--gold);
+}
 
-        .contact .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+/* FOOTER */
+footer{
+  border-top:1px solid rgba(201,168,76,0.1);
+  padding:30px;
+  text-align:center;
+  color:var(--muted);
+}
 
-        .contact h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-        }
+/* WHATSAPP */
+.wa-float{
+  position:fixed;
+  width:60px;
+  height:60px;
+  bottom:30px;
+  right:30px;
+  background:#25D366;
+  border-radius:50%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  color:white;
+  font-size:28px;
+  text-decoration:none;
+}
 
-        .contact p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-        }
+/* RESPONSIVO */
+@media(max-width:900px){
 
-        .contact-info {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
+  .about-grid,
+  .services-grid,
+  .testimonials-grid,
+  .contact-grid{
+    grid-template-columns:1fr;
+  }
 
-        .contact-item {
-            background: rgba(255,255,255,0.1);
-            padding: 1.5rem;
-            border-radius: 8px;
-        }
+  .hero h1{
+    font-size:42px;
+  }
 
-        .contact-item h3 {
-            color: #d4af37;
-            margin-bottom: 0.5rem;
-        }
+  nav{
+    flex-direction:column;
+    gap:15px;
+  }
 
-        /* Footer */
-        footer {
-            background-color: #0f2a3a;
-            color: #f5f5f0;
-            text-align: center;
-            padding: 2rem;
-        }
-
-        footer p {
-            margin-bottom: 0.5rem;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            nav .nav-links {
-                display: none;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .about .container {
-                grid-template-columns: 1fr;
-            }
-
-            .services-grid,
-            .testimonials-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .contact-info {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+}
+</style>
 </head>
+
 <body>
-    <!-- Navigation -->
-    <nav>
-        <div class="container">
-            <a href="#" class="logo">Liberty Broker's</a>
-            <ul class="nav-links">
-                <li><a href="#about">Sobre</a></li>
-                <li><a href="#services">Serviços</a></li>
-                <li><a href="#testimonials">Depoimentos</a></li>
-                <li><a href="#contact" class="cta-button">Contato</a></li>
-            </ul>
-        </div>
-    </nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <h1>Encontre Seu Imóvel de Sonho</h1>
-            <p>Consultoria imobiliária premium com as melhores propriedades do mercado</p>
-            <div class="buttons">
-                <a href="#contact" class="btn btn-primary">Consultar Agora</a>
-                <a href="#services" class="btn btn-secondary">Saiba Mais</a>
-            </div>
-        </div>
-    </section>
+<nav>
+  <a href="#" class="logo">Liberty Broker's</a>
 
-    <!-- About Section -->
-    <section class="about" id="about">
-        <div class="container">
-            <div>
-                <h2>Sobre Liberty Broker's</h2>
-                <p>Com mais de 15 anos de experiência no mercado imobiliário, a Liberty Broker's é referência em consultoria premium.</p>
-                <p>Nosso compromisso é oferecer as melhores soluções imobiliárias, conectando clientes aos imóveis que melhor se adequam às suas necessidades e orçamento.</p>
-                <p>Dispomos de um portfólio exclusivo de propriedades em localidades estratégicas, com atendimento personalizado e profissional.</p>
-            </div>
-            <div>
-                <h3 style="color: #d4af37; margin-bottom: 1.5rem;">Por que nos escolher?</h3>
-                <ul style="list-style: none; color: #666;">
-                    <li style="margin-bottom: 1rem;">✓ Equipe experiente e dedicada</li>
-                    <li style="margin-bottom: 1rem;">✓ Portfólio exclusivo de imóveis</li>
-                    <li style="margin-bottom: 1rem;">✓ Atendimento personalizado</li>
-                    <li style="margin-bottom: 1rem;">✓ Transparência total em negociações</li>
-                    <li style="margin-bottom: 1rem;">✓ Suporte completo do início ao fim</li>
-                </ul>
-            </div>
-        </div>
-    </section>
+  <div class="nav-links">
+    <a href="#sobre">Sobre</a>
+    <a href="#servicos">Serviços</a>
+    <a href="#depoimentos">Depoimentos</a>
+    <a href="#contato">Contato</a>
+  </div>
+</nav>
 
-    <!-- Services Section -->
-    <section class="services" id="services">
-        <div class="container">
-            <h2>Nossos Serviços</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <h3>Compra e Venda</h3>
-                    <p>Facilitamos a compra e venda de imóveis com segurança, transparência e eficiência em todas as etapas do processo.</p>
-                </div>
-                <div class="service-card">
-                    <h3>Aluguel de Imóveis</h3>
-                    <p>Oferecemos opções de aluguel para residências, comercial e industrial com as melhores condições de mercado.</p>
-                </div>
-                <div class="service-card">
-                    <h3>Consultoria Imobiliária</h3>
-                    <p>Consultoria especializada para investidores que buscam oportunidades rentáveis no mercado imobiliário.</p>
-                </div>
-                <div class="service-card">
-                    <h3>Avaliação de Imóveis</h3>
-                    <p>Avaliação técnica e precisa de propriedades para fins de compra, venda, financiamento ou seguros.</p>
-                </div>
-                <div class="service-card">
-                    <h3>Gestão de Propriedades</h3>
-                    <p>Gerenciamento completo de imóveis alugados, incluindo manutenção, inquilinos e documentação.</p>
-                </div>
-                <div class="service-card">
-                    <h3>Intermediação Comercial</h3>
-                    <p>Intermediação de negócios imobiliários comerciais com expertise em contratos e legislação.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+<section class="hero">
 
-    <!-- Testimonials Section -->
-    <section class="testimonials" id="testimonials">
-        <div class="container">
-            <h2>O Que Nossos Clientes Dizem</h2>
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <p>"A Liberty Broker's foi fundamental na compra do meu imóvel. Profissionalismo e transparência em todas as etapas!"</p>
-                    <div class="author">- João Silva</div>
-                </div>
-                <div class="testimonial-card">
-                    <p>"Excelente atendimento! Encontrei exatamente o que procurava com a ajuda da equipe experiente."</p>
-                    <div class="author">- Maria Santos</div>
-                </div>
-                <div class="testimonial-card">
-                    <p>"Recomendo fortemente. A Liberty Broker's oferece soluções imobiliárias de qualidade superior."</p>
-                    <div class="author">- Carlos Oliveira</div>
-                </div>
-            </div>
-        </div>
-    </section>
+  <div class="hero-content">
 
-    <!-- Contact Section -->
-    <section class="contact" id="contact">
-        <div class="container">
-            <h2>Entre em Contato</h2>
-            <p>Estamos prontos para ajudar você a encontrar o imóvel perfeito</p>
-            <div class="contact-info">
-                <div class="contact-item">
-                    <h3>Telefone</h3>
-                    <p>(11) 93900-6735</p>
-                </div>
-                <div class="contact-item">
-                    <h3>Email</h3>
-                    <p>nelson@libertybrokers.com.br</p>
-                </div>
-                <div class="contact-item">
-                    <h3>Endereço</h3>
-                    <p>São Paulo, SP</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    <h1>
+      Encontre Seu Imóvel
+      <br>
+      <em>de Sonho</em>
+    </h1>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2024 Liberty Broker's. Todos os direitos reservados.</p>
-        <p>Consultoria Imobiliária Premium</p>
-    </footer>
+    <p>
+      Consultoria imobiliária premium com as melhores propriedades do mercado.
+      Mais de 15 anos conectando pessoas aos imóveis ideais.
+    </p>
+
+    <div class="hero-btns">
+
+      <a href="#contato" class="btn-gold">
+        Consultar Agora
+      </a>
+
+      <a href="#servicos" class="btn-outline">
+        Nossos Serviços
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+<div class="stats-bar">
+
+  <div class="stat">
+    <div class="stat-num">15+</div>
+    <div class="stat-label">Anos de Mercado</div>
+  </div>
+
+  <div class="stat">
+    <div class="stat-num">500+</div>
+    <div class="stat-label">Clientes Atendidos</div>
+  </div>
+
+  <div class="stat">
+    <div class="stat-num">3</div>
+    <div class="stat-label">Portais Especializados</div>
+  </div>
+
+  <div class="stat">
+    <div class="stat-num">100%</div>
+    <div class="stat-label">Transparência</div>
+  </div>
+
+</div>
+
+<section class="section" id="sobre">
+
+  <h2>
+    Sobre a
+    <em>Liberty Broker's</em>
+  </h2>
+
+  <div class="about-grid">
+
+    <div class="about-text">
+
+      <p>
+        Com mais de 15 anos de experiência no mercado imobiliário,
+        a Liberty Broker's é referência em consultoria premium em São Paulo.
+      </p>
+
+      <p>
+        Nosso compromisso é oferecer as melhores soluções imobiliárias,
+        conectando clientes aos imóveis ideais.
+      </p>
+
+      <p>
+        Dispomos de um portfólio exclusivo de propriedades
+        com atendimento personalizado e profissional.
+      </p>
+
+    </div>
+
+    <div class="about-card">
+
+      <div class="as-item">
+        <div class="as-num">15+</div>
+        <p>Anos de experiência</p>
+      </div>
+
+      <div class="as-item">
+        <div class="as-num">500+</div>
+        <p>Clientes satisfeitos</p>
+      </div>
+
+      <div class="as-item">
+        <div class="as-num">3</div>
+        <p>Portais especializados</p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<section class="section services" id="servicos">
+
+  <h2>
+    Nossos
+    <em>Serviços</em>
+  </h2>
+
+  <div class="services-grid">
+
+    <div class="svc-card">
+      <h3 class="svc-title">Imóveis em Construção</h3>
+      <p class="svc-text">
+        Empreendimentos com condições exclusivas de lançamento.
+      </p>
+    </div>
+
+    <div class="svc-card">
+      <h3 class="svc-title">Lançamentos</h3>
+      <p class="svc-text">
+        Os melhores lançamentos imobiliários de São Paulo.
+      </p>
+    </div>
+
+    <div class="svc-card">
+      <h3 class="svc-title">Imóveis Prontos</h3>
+      <p class="svc-text">
+        Casas, apartamentos e coberturas nos melhores bairros.
+      </p>
+    </div>
+
+  </div>
+
+</section>
+
+<section class="section" id="depoimentos">
+
+  <h2>
+    O Que Nossos
+    <em>Clientes Dizem</em>
+  </h2>
+
+  <div class="testimonials-grid">
+
+    <div class="tcard">
+      <div class="tcard-text">
+        Excelente atendimento e total transparência em todas as etapas.
+      </div>
+      <div class="tcard-name">João Silva</div>
+    </div>
+
+    <div class="tcard">
+      <div class="tcard-text">
+        Processo tranquilo e atendimento personalizado do início ao fim.
+      </div>
+      <div class="tcard-name">Maria Santos</div>
+    </div>
+
+    <div class="tcard">
+      <div class="tcard-text">
+        Consultoria premium e imóveis de qualidade superior.
+      </div>
+      <div class="tcard-name">Carlos Oliveira</div>
+    </div>
+
+  </div>
+
+</section>
+
+<section class="section services" id="contato">
+
+  <h2>
+    Entre em
+    <em>Contato</em>
+  </h2>
+
+  <div class="contact-grid">
+
+    <div>
+
+      <div class="contact-box">
+        <h4>Telefone / WhatsApp</h4>
+        <p>(11) 9 3900-6735</p>
+      </div>
+
+      <div class="contact-box">
+        <h4>E-mail</h4>
+        <p>nelson@libertybrokers.com.br</p>
+      </div>
+
+      <div class="contact-box">
+        <h4>Localização</h4>
+        <p>São Paulo - SP</p>
+      </div>
+
+    </div>
+
+    <div class="contact-box">
+
+      <h3 style="margin-bottom:20px;">
+        Pronto para investir?
+      </h3>
+
+      <p style="margin-bottom:30px;line-height:1.8;">
+        Atendimento personalizado com total transparência
+        em cada etapa da negociação.
+      </p>
+
+      <a href="https://wa.me/5511939006735" class="btn-gold">
+        Chamar no WhatsApp
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+<footer>
+  © 2025 Liberty Broker's · Todos os direitos reservados
+</footer>
+
+<a href="https://wa.me/5511939006735" class="wa-float">
+  ☎
+</a>
+
 </body>
 </html>
