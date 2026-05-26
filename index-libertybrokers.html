@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Liberty Broker's — Consultoria Imobiliária Premium</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --gold:#C9A84C;--gold-light:#E8C97A;--gold-dim:#8B6E2E;
+  --navy:#0A1628;--navy-mid:#122040;--navy-card:#0f1e3a;
+  --cream:#F5F0E8;--white:#FFFFFF;--muted:rgba(245,240,232,0.6);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Montserrat',sans-serif;background:var(--navy);color:var(--cream);overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:18px 48px;background:rgba(10,22,40,0.97);backdrop-filter:blur(8px);border-bottom:1px solid rgba(201,168,76,0.1)}
+.logo{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;letter-spacing:0.12em;color:var(--gold);text-transform:uppercase;text-decoration:none}
+.logo span{font-style:italic;color:var(--cream)}
+.nav-links{display:flex;gap:32px;align-items:center}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;transition:color .3s}
+.nav-links a:hover{color:var(--gold)}
+.nav-cta{border:1px solid var(--gold-dim)!important;padding:7px 18px;color:var(--gold)!important;transition:all .3s!important}
+.nav-cta:hover{background:var(--gold)!important;color:var(--navy)!important}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.hamburger span{display:block;width:24px;height:2px;background:var(--gold);transition:all .3s}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:120px 48px 80px;text-align:center;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 40%,rgba(201,168,76,0.08) 0%,transparent 70%),linear-gradient(180deg,var(--navy) 0%,var(--navy-mid) 50%,var(--navy) 100%)}
+.hero-lines{position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(201,168,76,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.03) 1px,transparent 1px);background-size:70px 70px}
+.hero-content{position:relative;z-index:2;max-width:860px}
+.hero-eyebrow{font-size:10px;letter-spacing:0.38em;text-transform:uppercase;color:var(--gold);margin-bottom:24px;display:flex;align-items:center;justify-content:center;gap:16px}
+.hero-eyebrow::before,.hero-eyebrow::after{content:'';display:block;width:44px;height:1px;background:var(--gold-dim)}
+h1{font-family:'Cormorant Garamond',serif;font-size:clamp(42px,6vw,82px);font-weight:300;line-height:1.06;color:var(--white);margin-bottom:20px}
+h1 em{font-style:italic;color:var(--gold)}
+.hero-sub{font-size:13px;letter-spacing:0.08em;color:var(--muted);max-width:480px;margin:0 auto 44px;line-height:1.85}
+.hero-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn-gold{display:inline-flex;align-items:center;gap:9px;background:var(--gold);color:var(--navy);padding:15px 34px;text-decoration:none;font-size:10px;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;transition:all .3s}
+.btn-gold:hover{background:var(--gold-light);transform:translateY(-2px)}
+.btn-outline{display:inline-flex;align-items:center;gap:9px;border:1px solid var(--gold-dim);color:var(--gold);padding:15px 34px;text-decoration:none;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;transition:all .3s}
+.btn-outline:hover{border-color:var(--gold);background:rgba(201,168,76,0.07)}
+.hero-scroll{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--muted);font-size:9px;letter-spacing:0.2em;animation:bounce 2.2s infinite}
+.hero-scroll::after{content:'';display:block;width:1px;height:36px;background:linear-gradient(var(--gold-dim),transparent)}
+@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(7px)}}
+
+/* STATS */
+.stats-bar{display:flex;justify-content:center;border-top:1px solid rgba(201,168,76,0.12);border-bottom:1px solid rgba(201,168,76,0.12)}
+.stat{flex:1;max-width:190px;text-align:center;padding:30px 16px;border-right:1px solid rgba(201,168,76,0.08)}
+.stat:last-child{border-right:none}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:300;color:var(--gold)}
+.stat-label{font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-top:4px}
+
+/* SECTIONS GENÉRICAS */
+.section{padding:88px 48px;max-width:1300px;margin:0 auto}
+.section-full{padding:88px 48px;background:var(--navy-mid)}
+.section-full-inner{max-width:1300px;margin:0 auto}
+.section-label{font-size:9px;letter-spacing:0.32em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+h2{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,3.8vw,46px);font-weight:300;line-height:1.1;margin-bottom:20px}
+h2 em{font-style:italic;color:var(--gold)}
+.section-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:52px;padding-bottom:20px;border-bottom:1px solid rgba(201,168,76,0.12)}
+.section-count{font-family:'Cormorant Garamond',serif;font-size:64px;font-weight:300;color:rgba(201,168,76,0.1);line-height:1}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.about-text p{font-size:13px;line-height:1.95;color:var(--muted);margin-bottom:16px}
+.about-text p strong{color:var(--cream);font-weight:500}
+.about-checks{margin-top:28px;display:flex;flex-direction:column;gap:10px}
+.check{display:flex;align-items:center;gap:12px;font-size:11px;letter-spacing:0.06em;color:var(--cream)}
+.check::before{content:'';display:block;width:18px;height:18px;border:1px solid var(--gold);border-radius:50%;background:rgba(201,168,76,0.1);flex-shrink:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23C9A84C' stroke-width='2.5'%3E%3Cpath d='M5 13l4 4L19 7'/%3E%3C/svg%3E");background-size:12px;background-repeat:no-repeat;background-position:center}
+.about-visual{position:relative}
+.about-card{background:var(--navy-card);border:1px solid rgba(201,168,76,0.12);padding:40px;position:relative}
+.about-card::before{content:'';position:absolute;top:-1px;left:40px;right:40px;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.about-stat{display:flex;flex-direction:column;gap:24px}
+.as-item{display:flex;align-items:center;gap:20px;padding-bottom:20px;border-bottom:1px solid rgba(201,168,76,0.08)}
+.as-item:last-child{border-bottom:none;padding-bottom:0}
+.as-num{font-family:'Cormorant Garamond',serif;font-size:44px;font-weight:300;color:var(--gold);min-width:80px}
+.as-label{font-size:11px;line-height:1.6;color:var(--muted)}
+.as-label strong{display:block;color:var(--cream);font-size:13px;margin-bottom:2px}
+
+/* SERVIÇOS — 3 cards principais linkados + 3 menores */
+.services-main{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-bottom:2px}
+.services-secondary{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.svc-card{background:var(--navy-card);border:1px solid rgba(201,168,76,0.06);padding:36px 32px;text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:16px;transition:all .3s;position:relative;overflow:hidden}
+.svc-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--gold);transform:scaleX(0);transition:transform .3s;transform-origin:left}
+.svc-card:hover{border-color:rgba(201,168,76,0.25);background:#111d38}
+.svc-card:hover::after{transform:scaleX(1)}
+.svc-card.featured{border-color:rgba(201,168,76,0.2)}
+.svc-icon{font-size:32px;margin-bottom:4px}
+.svc-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;color:var(--white)}
+.svc-text{font-size:11px;line-height:1.8;color:var(--muted);flex:1}
+.svc-link{display:inline-flex;align-items:center;gap:8px;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-top:auto;transition:gap .3s}
+.svc-card:hover .svc-link{gap:14px}
+.svc-card-sm{background:var(--navy-card);border:1px solid rgba(201,168,76,0.06);padding:28px 28px;display:flex;flex-direction:column;gap:10px;transition:all .3s;position:relative;overflow:hidden}
+.svc-card-sm::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--gold);transform:scaleX(0);transition:transform .3s;transform-origin:left}
+.svc-card-sm:hover{border-color:rgba(201,168,76,0.2);background:#111d38}
+.svc-card-sm:hover::after{transform:scaleX(1)}
+.svc-icon-sm{font-size:22px}
+.svc-title-sm{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:400;color:var(--white)}
+.svc-text-sm{font-size:11px;line-height:1.7;color:var(--muted)}
+
+/* DEPOIMENTOS */
+.testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.tcard{background:var(--navy-card);border:1px solid rgba(201,168,76,0.08);padding:36px 32px;position:relative}
+.tcard::before{content:'"';font-family:'Cormorant Garamond',serif;font-size:80px;color:rgba(201,168,76,0.12);position:absolute;top:16px;left:24px;line-height:1}
+.tcard-text{font-size:13px;line-height:1.9;color:var(--muted);position:relative;z-index:1;margin-bottom:24px;padding-top:20px}
+.tcard-author{display:flex;align-items:center;gap:14px;border-top:1px solid rgba(201,168,76,0.1);padding-top:20px}
+.tcard-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--gold-dim),var(--gold));display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--navy);font-weight:600;flex-shrink:0}
+.tcard-name{font-size:12px;font-weight:600;color:var(--cream)}
+.tcard-stars{font-size:11px;color:var(--gold);margin-top:2px;letter-spacing:2px}
+
+/* CONTATO */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.contact-info{display:flex;flex-direction:column;gap:24px}
+.ci-item{display:flex;align-items:flex-start;gap:18px;padding:24px;background:var(--navy-card);border:1px solid rgba(201,168,76,0.08);transition:border-color .3s}
+.ci-item:hover{border-color:rgba(201,168,76,0.25)}
+.ci-icon{font-size:24px;flex-shrink:0;margin-top:2px}
+.ci-label{font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.ci-value{font-size:14px;color:var(--cream);font-family:'Cormorant Garamond',serif;font-weight:400}
+.ci-value a{color:var(--cream);text-decoration:none}
+.ci-value a:hover{color:var(--gold)}
+.contact-cta{background:var(--navy-card);border:1px solid rgba(201,168,76,0.12);padding:40px;display:flex;flex-direction:column;gap:20px}
+.contact-cta h3{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300}
+.contact-cta h3 em{font-style:italic;color:var(--gold)}
+.contact-cta p{font-size:12px;color:var(--muted);line-height:1.8}
+.cta-btns{display:flex;flex-direction:column;gap:12px;margin-top:8px}
+
+/* FOOTER */
+footer{padding:36px 48px;display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(201,168,76,0.1);flex-wrap:wrap;gap:12px}
+footer p{font-size:10px;color:var(--muted);letter-spacing:0.1em}
+footer a{color:var(--gold-dim);text-decoration:none}
+.footer-links{display:flex;gap:24px}
+
+/* WA */
+.wa-float{position:fixed;bottom:28px;right:28px;z-index:999;width:54px;height:54px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 6px 24px rgba(37,211,102,0.45);animation:waf 3s ease-in-out infinite}
+.wa-float:hover{transform:scale(1.1)}
+.wa-float svg{width:28px;height:28px;fill:white}
+@keyframes waf{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+
+/* ANIMATIONS */
+.fade-up{opacity:0;transform:translateY(24px);transition:opacity .65s ease,transform .65s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+
+/* MOBILE */
+@media(max-width:900px){
+  nav{padding:14px 20px}
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .nav-links.open{display:flex;flex-direction:column;position:fixed;top:56px;left:0;right:0;background:rgba(10,22,40,0.98);padding:24px;gap:20px;border-bottom:1px solid rgba(201,168,76,0.1)}
+  .hero{padding:100px 20px 60px}
+  .section{padding:56px 20px}
+  .section-full{padding:56px 20px}
+  .about-grid{grid-template-columns:1fr;gap:36px}
+  .services-main{grid-template-columns:1fr}
+  .services-secondary{grid-template-columns:1fr 1fr}
+  .testimonials-grid{grid-template-columns:1fr}
+  .contact-grid{grid-template-columns:1fr}
+  .stats-bar{flex-wrap:wrap}
+  .stat{min-width:50%;border-right:none;border-bottom:1px solid rgba(201,168,76,0.08)}
+  footer{padding:20px;flex-direction:column;text-align:center}
+  .footer-links{justify-content:center}
+  .section-header{flex-direction:column;align-items:flex-start;gap:12px}
+}
+@media(max-width:480px){
+  .services-secondary{grid-template-columns:1fr}
+  h1{font-size:36px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo">Liberty <span>Broker's</span></a>
+  <div class="nav-links" id="navLinks">
+    <a href="#sobre">Sobre</a>
+    <a href="#servicos">Serviços</a>
+    <a href="#depoimentos">Depoimentos</a>
+    <a href="#contato">Contato</a>
+    <a href="https://wa.me/5511939006735" class="nav-cta" target="_blank">WhatsApp</a>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-lines"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Consultoria Imobiliária Premium</div>
+    <h1>Encontre Seu Imóvel<br><em>de Sonho</em></h1>
+    <p class="hero-sub">Consultoria imobiliária premium com as melhores propriedades do mercado. Mais de 15 anos conectando pessoas aos imóveis ideais.</p>
+    <div class="hero-btns">
+      <a href="#contato" class="btn-gold">Consultar Agora →</a>
+      <a href="#servicos" class="btn-outline">Nossos Serviços</a>
+    </div>
+  </div>
+  <div class="hero-scroll">Explorar</div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat fade-up"><div class="stat-num">15+</div><div class="stat-label">Anos de Mercado</div></div>
+  <div class="stat fade-up"><div class="stat-num">500+</div><div class="stat-label">Clientes Atendidos</div></div>
+  <div class="stat fade-up"><div class="stat-num">3</div><div class="stat-label">Portais Especializados</div></div>
+  <div class="stat fade-up"><div class="stat-num">100%</div><div class="stat-label">Transparência</div></div>
+</div>
+
+<!-- SOBRE -->
+<section class="section" id="sobre">
+  <div class="section-header fade-up">
+    <div>
+      <div class="section-label">Quem Somos</div>
+      <h2>Sobre a Liberty <em>Broker's</em></h2>
+    </div>
+    <div class="section-count">01</div>
+  </div>
+  <div class="about-grid">
+    <div class="about-text fade-up">
+      <p>Com mais de <strong>15 anos de experiência</strong> no mercado imobiliário, a Liberty Broker's é referência em consultoria premium em São Paulo.</p>
+      <p>Nosso compromisso é oferecer as melhores soluções imobiliárias, conectando clientes aos imóveis que melhor se adequam às suas necessidades e orçamento.</p>
+      <p>Dispomos de um <strong>portfólio exclusivo</strong> de propriedades em localidades estratégicas, com atendimento personalizado e profissional do início ao fim.</p>
+      <div class="about-checks">
+        <div class="check">Equipe experiente e dedicada</div>
+        <div class="check">Portfólio exclusivo de imóveis</div>
+        <div class="check">Atendimento personalizado</div>
+        <div class="check">Transparência total em negociações</div>
+        <div class="check">Suporte completo do início ao fim</div>
+      </div>
+    </div>
+    <div class="about-visual fade-up">
+      <div class="about-card">
+        <div class="about-stat">
+          <div class="as-item">
+            <div class="as-num">15+</div>
+            <div class="as-label"><strong>Anos de Experiência</strong>Referência no mercado imobiliário premium de São Paulo</div>
+          </div>
+          <div class="as-item">
+            <div class="as-num">500+</div>
+            <div class="as-label"><strong>Clientes Satisfeitos</strong>Famílias e investidores atendidos com excelência</div>
+          </div>
+          <div class="as-item">
+            <div class="as-num">3</div>
+            <div class="as-label"><strong>Portais Especializados</strong>Construção, Lançamentos e Imóveis Prontos</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVIÇOS -->
+<div class="section-full" id="servicos">
+  <div class="section-full-inner">
+    <div class="section-header fade-up">
+      <div>
+        <div class="section-label">O Que Oferecemos</div>
+        <h2>Nossos <em>Serviços</em></h2>
+      </div>
+      <div class="section-count">02</div>
+    </div>
+
+    <!-- 3 cards principais com links para subdomínios -->
+    <div class="services-main">
+
+      <a href="https://construcao.libertybrokers.com.br" class="svc-card featured fade-up" target="_blank">
+        <div class="svc-icon">🏗️</div>
+        <div class="svc-title">Imóveis em Construção</div>
+        <div class="svc-text">Acompanhe empreendimentos em construção com condições exclusivas de lançamento. Os melhores preços antes da entrega, com segurança e garantia construtiva.</div>
+        <div class="svc-link">Acessar Portal →</div>
+      </a>
+
+      <a href="https://lancamentos.libertybrokers.com.br" class="svc-card featured fade-up" target="_blank">
+        <div class="svc-icon">🏢</div>
+        <div class="svc-title">Lançamentos</div>
+        <div class="svc-text">Os mais recentes lançamentos imobiliários de São Paulo. Oportunidades exclusivas nos melhores bairros, com curadoria especializada e entrega garantida.</div>
+        <div class="svc-link">Ver Lançamentos →</div>
+      </a>
+
+      <a href="https://prontos.libertybrokers.com.br" class="svc-card featured fade-up" target="_blank">
+        <div class="svc-icon">🏠</div>
+        <div class="svc-title">Imóveis Prontos</div>
+        <div class="svc-text">Portfólio selecionado de imóveis prontos para morar ou investir. Casas, apartamentos e coberturas nos endereços mais valorizados da capital.</div>
+        <div class="svc-link">Ver Imóveis →</div>
+      </a>
+
+    </div>
+
+    <!-- 3 cards secundários -->
+    <div class="services-secondary">
+      <div class="svc-card-sm fade-up">
+        <div class="svc-icon-sm">🤝</div>
+        <div class="svc-title-sm">Consultoria Especializada</div>
+        <div class="svc-text-sm">Consultoria para investidores que buscam oportunidades rentáveis no mercado imobiliário com análise detalhada de cada ativo.</div>
+      </div>
+      <div class="svc-card-sm fade-up">
+        <div class="svc-icon-sm">📊</div>
+        <div class="svc-title-sm">Avaliação de Imóveis</div>
+        <div class="svc-text-sm">Avaliação técnica e precisa de propriedades para fins de compra, venda, financiamento ou seguros com laudos completos.</div>
+      </div>
+      <div class="svc-card-sm fade-up">
+        <div class="svc-icon-sm">🔑</div>
+        <div class="svc-title-sm">Gestão de Propriedades</div>
+        <div class="svc-text-sm">Gerenciamento completo de imóveis alugados, incluindo manutenção, inquilinos e documentação com total tranquilidade.</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- DEPOIMENTOS -->
+<section class="section" id="depoimentos">
+  <div class="section-header fade-up">
+    <div>
+      <div class="section-label">Satisfação Garantida</div>
+      <h2>O Que Nossos <em>Clientes Dizem</em></h2>
+    </div>
+    <div class="section-count">03</div>
+  </div>
+  <div class="testimonials-grid">
+    <div class="tcard fade-up">
+      <div class="tcard-text">A Liberty Broker's foi fundamental na compra do meu imóvel. Profissionalismo e transparência em todas as etapas. Recomendo sem hesitar!</div>
+      <div class="tcard-author">
+        <div class="tcard-avatar">J</div>
+        <div>
+          <div class="tcard-name">João Silva</div>
+          <div class="tcard-stars">★★★★★</div>
+        </div>
+      </div>
+    </div>
+    <div class="tcard fade-up">
+      <div class="tcard-text">Excelente atendimento! Encontrei exatamente o que procurava com a ajuda da equipe experiente. Processo tranquilo do início ao fim.</div>
+      <div class="tcard-author">
+        <div class="tcard-avatar">M</div>
+        <div>
+          <div class="tcard-name">Maria Santos</div>
+          <div class="tcard-stars">★★★★★</div>
+        </div>
+      </div>
+    </div>
+    <div class="tcard fade-up">
+      <div class="tcard-text">Recomendo fortemente. A Liberty Broker's oferece soluções imobiliárias de qualidade superior com um atendimento verdadeiramente personalizado.</div>
+      <div class="tcard-author">
+        <div class="tcard-avatar">C</div>
+        <div>
+          <div class="tcard-name">Carlos Oliveira</div>
+          <div class="tcard-stars">★★★★★</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTATO -->
+<div class="section-full" id="contato">
+  <div class="section-full-inner">
+    <div class="section-header fade-up">
+      <div>
+        <div class="section-label">Fale Conosco</div>
+        <h2>Entre em <em>Contato</em></h2>
+      </div>
+      <div class="section-count">04</div>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="ci-item fade-up">
+          <div class="ci-icon">📞</div>
+          <div>
+            <div class="ci-label">Telefone / WhatsApp</div>
+            <div class="ci-value"><a href="https://wa.me/5511939006735">(11) 9 3900-6735</a></div>
+          </div>
+        </div>
+        <div class="ci-item fade-up">
+          <div class="ci-icon">✉️</div>
+          <div>
+            <div class="ci-label">E-mail</div>
+            <div class="ci-value"><a href="mailto:nelson@libertybrokers.com.br">nelson@libertybrokers.com.br</a></div>
+          </div>
+        </div>
+        <div class="ci-item fade-up">
+          <div class="ci-icon">📍</div>
+          <div>
+            <div class="ci-label">Localização</div>
+            <div class="ci-value">São Paulo, SP</div>
+          </div>
+        </div>
+        <div class="ci-item fade-up">
+          <div class="ci-icon">🕐</div>
+          <div>
+            <div class="ci-label">Horário de Atendimento</div>
+            <div class="ci-value">Seg–Sex: 9h às 18h · Sáb: 9h às 13h</div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-cta fade-up">
+        <h3>Pronto para <em>investir</em>?</h3>
+        <p>Fale com Nelson diretamente. Atendimento personalizado, sem burocracia, com total transparência em cada etapa da negociação.</p>
+        <div class="cta-btns">
+          <a href="https://wa.me/5511939006735" class="btn-gold" target="_blank">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Chamar no WhatsApp
+          </a>
+          <a href="mailto:nelson@libertybrokers.com.br" class="btn-outline">✉ Enviar E-mail</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 Liberty Broker's · Todos os direitos reservados · CRECI SP</p>
+  <div class="footer-links">
+    <a href="https://construcao.libertybrokers.com.br">Construção</a>
+    <a href="https://lancamentos.libertybrokers.com.br">Lançamentos</a>
+    <a href="https://prontos.libertybrokers.com.br">Prontos</a>
+    <a href="mailto:nelson@libertybrokers.com.br">Contato</a>
+  </div>
+</footer>
+
+<!-- WhatsApp Flutuante -->
+<a href="https://wa.me/5511939006735" class="wa-float" target="_blank">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+// Fade-up
+const obs=new IntersectionObserver((entries)=>{
+  entries.forEach((e,i)=>{if(e.isIntersecting)setTimeout(()=>e.target.classList.add('visible'),i*70)});
+},{threshold:0.08});
+document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+
+// Hamburger
+document.getElementById('hamburger').addEventListener('click',()=>{
+  document.getElementById('navLinks').classList.toggle('open');
+});
+</script>
+</body>
+</html>
