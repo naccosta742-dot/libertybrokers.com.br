@@ -1,1 +1,558 @@
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
 
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Liberty Broker's — Consultoria Imobiliária Premium</title>
+
+<meta name="description"
+content="Consultoria imobiliária premium em São Paulo. Imóveis em construção, lançamentos e imóveis prontos com atendimento especializado.">
+
+<meta name="keywords"
+content="imóveis, imobiliária, São Paulo, apartamentos, lançamentos, consultoria imobiliária">
+
+<meta name="author"
+content="Liberty Broker's">
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Cormorant+Garamond:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+--gold:#C9A84C;
+--navy:#0A1628;
+--cream:#F5F0E8;
+--card:#122040;
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+font-family:'Montserrat',sans-serif;
+background:var(--navy);
+color:var(--cream);
+overflow-x:hidden;
+}
+
+/* NAV */
+
+nav{
+position:fixed;
+top:0;
+left:0;
+right:0;
+z-index:1000;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 40px;
+background:rgba(10,22,40,0.95);
+backdrop-filter:blur(10px);
+border-bottom:1px solid rgba(201,168,76,0.1);
+}
+
+.logo{
+font-family:'Cormorant Garamond',serif;
+font-size:26px;
+color:var(--gold);
+text-decoration:none;
+}
+
+.nav-links{
+display:flex;
+gap:24px;
+align-items:center;
+}
+
+.nav-links a{
+color:var(--cream);
+text-decoration:none;
+font-size:14px;
+transition:0.3s;
+}
+
+.nav-links a:hover{
+color:var(--gold);
+}
+
+.nav-cta{
+border:1px solid var(--gold);
+padding:10px 18px;
+color:var(--gold) !important;
+}
+
+.nav-cta:hover{
+background:var(--gold);
+color:var(--navy) !important;
+}
+
+/* HERO */
+
+.hero{
+min-height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:120px 20px 60px;
+background:
+linear-gradient(rgba(10,22,40,0.8),rgba(10,22,40,0.95));
+}
+
+.hero h1{
+font-family:'Cormorant Garamond',serif;
+font-size:72px;
+font-weight:300;
+line-height:1.1;
+margin-bottom:24px;
+}
+
+.hero h1 em{
+color:var(--gold);
+font-style:italic;
+}
+
+.hero p{
+max-width:700px;
+font-size:18px;
+line-height:1.8;
+opacity:0.85;
+margin-bottom:40px;
+}
+
+.hero-btns{
+display:flex;
+gap:20px;
+flex-wrap:wrap;
+justify-content:center;
+}
+
+.btn-gold{
+background:var(--gold);
+color:var(--navy);
+padding:15px 30px;
+text-decoration:none;
+font-weight:600;
+transition:0.3s;
+}
+
+.btn-gold:hover{
+transform:translateY(-3px);
+}
+
+.btn-outline{
+border:1px solid var(--gold);
+padding:15px 30px;
+text-decoration:none;
+color:var(--gold);
+transition:0.3s;
+}
+
+.btn-outline:hover{
+background:rgba(201,168,76,0.1);
+}
+
+/* SECTION */
+
+.section{
+padding:100px 40px;
+max-width:1300px;
+margin:auto;
+}
+
+.section-title{
+font-family:'Cormorant Garamond',serif;
+font-size:48px;
+margin-bottom:50px;
+text-align:center;
+}
+
+.section-title em{
+color:var(--gold);
+}
+
+/* SERVICES */
+
+.services-main{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:24px;
+}
+
+.svc-card{
+background:var(--card);
+border:1px solid rgba(201,168,76,0.15);
+padding:40px;
+text-decoration:none;
+color:white;
+transition:0.3s;
+display:flex;
+flex-direction:column;
+gap:18px;
+min-height:320px;
+}
+
+.svc-card:hover{
+transform:translateY(-6px);
+border-color:var(--gold);
+}
+
+.svc-icon{
+font-size:40px;
+}
+
+.svc-title{
+font-family:'Cormorant Garamond',serif;
+font-size:30px;
+}
+
+.svc-text{
+line-height:1.8;
+opacity:0.85;
+}
+
+.svc-link{
+margin-top:auto;
+color:var(--gold);
+font-weight:600;
+}
+
+/* CONTACT */
+
+.contact-box{
+background:var(--card);
+padding:50px;
+border:1px solid rgba(201,168,76,0.15);
+text-align:center;
+}
+
+.contact-box p{
+margin-bottom:18px;
+font-size:18px;
+}
+
+/* FOOTER */
+
+footer{
+padding:40px;
+text-align:center;
+border-top:1px solid rgba(201,168,76,0.15);
+}
+
+/* WHATSAPP FLOAT */
+
+.wa-float{
+position:fixed;
+bottom:25px;
+right:25px;
+width:65px;
+height:65px;
+background:#25D366;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:32px;
+text-decoration:none;
+z-index:999;
+box-shadow:0 8px 30px rgba(37,211,102,0.4);
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+nav{
+padding:16px 20px;
+}
+
+.hero h1{
+font-size:48px;
+}
+
+.section{
+padding:80px 20px;
+}
+
+.nav-links{
+gap:14px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAV -->
+
+<nav>
+
+<a href="#" class="logo">
+Liberty Broker's
+</a>
+
+<div class="nav-links">
+
+<a href="#sobre">
+Sobre
+</a>
+
+<a href="#servicos">
+Serviços
+</a>
+
+<a href="#contato">
+Contato
+</a>
+
+<a href="https://wa.me/5511939006735"
+class="nav-cta"
+target="_blank"
+rel="noopener noreferrer">
+
+WhatsApp
+
+</a>
+
+</div>
+
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<h1>
+
+Encontre Seu Imóvel
+<br>
+<em>de Sonho</em>
+
+</h1>
+
+<p>
+
+Consultoria imobiliária premium com as melhores oportunidades do mercado imobiliário em São Paulo.
+
+</p>
+
+<div class="hero-btns">
+
+<a href="#contato" class="btn-gold">
+
+Consultar Agora →
+
+</a>
+
+<a href="#servicos" class="btn-outline">
+
+Nossos Serviços
+
+</a>
+
+</div>
+
+</section>
+
+<!-- SOBRE -->
+
+<section class="section" id="sobre">
+
+<h2 class="section-title">
+
+Sobre a <em>Liberty Broker's</em>
+
+</h2>
+
+<p style="text-align:center;max-width:900px;margin:auto;line-height:2;font-size:18px;opacity:0.85;">
+
+Mais de 15 anos conectando pessoas aos imóveis ideais com atendimento personalizado, transparência e excelência no mercado imobiliário premium.
+
+</p>
+
+</section>
+
+<!-- SERVIÇOS -->
+
+<section class="section" id="servicos">
+
+<h2 class="section-title">
+
+Nossos <em>Serviços</em>
+
+</h2>
+
+<div class="services-main">
+
+<!-- CARD 1 -->
+
+<a href="https://wa.me/5511939006735"
+class="svc-card"
+target="_blank"
+rel="noopener noreferrer">
+
+<div class="svc-icon">
+🏗️
+</div>
+
+<div class="svc-title">
+
+Imóveis em Construção
+
+</div>
+
+<div class="svc-text">
+
+Acompanhe empreendimentos em construção com condições exclusivas de lançamento e oportunidades únicas de investimento.
+
+</div>
+
+<div class="svc-link">
+
+Consultar no WhatsApp →
+
+</div>
+
+</a>
+
+<!-- CARD 2 -->
+
+<a href="https://wa.me/5511939006735"
+class="svc-card"
+target="_blank"
+rel="noopener noreferrer">
+
+<div class="svc-icon">
+🏢
+</div>
+
+<div class="svc-title">
+
+Lançamentos
+
+</div>
+
+<div class="svc-text">
+
+Os mais recentes lançamentos imobiliários de São Paulo nos melhores bairros da cidade.
+
+</div>
+
+<div class="svc-link">
+
+Ver Lançamentos →
+
+</div>
+
+</a>
+
+<!-- CARD 3 -->
+
+<a href="https://wa.me/5511939006735"
+class="svc-card"
+target="_blank"
+rel="noopener noreferrer">
+
+<div class="svc-icon">
+🏠
+</div>
+
+<div class="svc-title">
+
+Imóveis Prontos
+
+</div>
+
+<div class="svc-text">
+
+Apartamentos, casas e coberturas prontas para morar ou investir com localização privilegiada.
+
+</div>
+
+<div class="svc-link">
+
+Ver Imóveis →
+
+</div>
+
+</a>
+
+</div>
+
+</section>
+
+<!-- CONTATO -->
+
+<section class="section" id="contato">
+
+<h2 class="section-title">
+
+Entre em <em>Contato</em>
+
+</h2>
+
+<div class="contact-box">
+
+<p>
+📞 WhatsApp: (11) 9 3900-6735
+</p>
+
+<p>
+✉️ nelson@libertybrokers.com.br
+</p>
+
+<br>
+
+<a href="https://wa.me/5511939006735"
+class="btn-gold"
+target="_blank"
+rel="noopener noreferrer">
+
+Chamar no WhatsApp
+
+</a>
+
+</div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+<p>
+
+© 2025 Liberty Broker's · Todos os direitos reservados
+
+</p>
+
+</footer>
+
+<!-- WHATSAPP -->
+
+<a href="https://wa.me/5511939006735"
+class="wa-float"
+target="_blank"
+rel="noopener noreferrer">
+
+💬
+
+</a>
+
+</body>
+</html>
+```
